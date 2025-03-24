@@ -15,6 +15,7 @@ public class BallControl : MonoBehaviour
     {
         rigidbody.velocity = new Vector2(Random.Range(-4f, 4f), Random.Range(4f,8f));
         lives = 1;
+        blocks = 0;
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
