@@ -3,7 +3,13 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - Planeta
+  - StartBut
+  - Loze
+  - Ball
+  - Block
+  - Live
   layers:
   - Default
   - TransparentFX
