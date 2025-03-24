@@ -5,11 +5,14 @@ using UnityEngine;
 
 public class Platform : MonoBehaviour
 {
+    [SerializeField] Rigidbody2D rigidbody;
     [SerializeField]
     [Range(10f, 100f)]
     float speed = 20f;
     [SerializeField]
     private TextMeshProUGUI liveText;
+    [SerializeField]
+    private GameObject ball;
     public static float distanse = 0.5f;
 
     void FixedUpdate()
@@ -52,5 +55,23 @@ public class Platform : MonoBehaviour
             Destroy(collision.gameObject);
             BallControl.lives++;
         }
+        if (collision.gameObject.CompareTag("Ball"))
+        {
+            Destroy(collision.gameObject);
+            Speed();
+        }
+    }
+
+    IEnumerator Ball()
+    {
+        Instantiate(ball);
+        ball.transform.position =  new Vector2(this.transform.position.x, this.transform.position.y + 5f);
+        yield return new WaitForSeconds(2f);
+        Destroy(ball);
+    }
+
+    private void Speed()
+    {
+        rigidbody.velocity = new Vector2(Random.Range(-4f, 4f), Random.Range(4f, 8f));
     }
 }
